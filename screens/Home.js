@@ -6,7 +6,11 @@ import { createStackNavigator } from '@react-navigation/stack'
 export default function HomeStack() {
     const Stack = createStackNavigator();
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: { backgroundColor: 'lavender' },
+            }}
+        >
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name='Details' component={Details} />
             <Stack.Screen name='Edit' component={Edit} />
@@ -19,16 +23,17 @@ function Home(props) {
     return (
         <View style={styles.container}>
             <Text>Meine Notizen</Text>
-            <Button title='View' onPress={() => navigation.navigate('Details')} />
+            <Button title='View 1' onPress={() => navigation.navigate('Details', { id: 1 })} />
+            <Button title='View 2' onPress={() => navigation.navigate('Details', { id: 2 })} />
         </View>
     );
 }
 
-function Details(props) {
-    const navigation = props.navigation;
+function Details({ navigation, route }) {
+    const id = route.params.id;
     return (
         <View style={styles.container}>
-            <Text>Details</Text>
+            <Text>{'Details' + id}</Text>
             <Button title='Edit' onPress={() => navigation.navigate('Edit')} />
         </View>
     );

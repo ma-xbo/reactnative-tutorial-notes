@@ -32,6 +32,7 @@ export default function App() {
         tabBarOptions={{
           activeTintColor: '#6097f0',
           inactiveTintColor: 'gray',
+          style: { backgroundColor: 'lavender' }
         }}
       >
         <Tab.Screen name='Home' component={Home} />
