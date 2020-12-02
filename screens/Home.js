@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { FlatList, View, Text, StyleSheet, Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack'
 
 
@@ -20,9 +20,19 @@ export default function HomeStack() {
 
 function Home(props) {
     const navigation = props.navigation;
+
+    const data = [
+        { id: 1, title: 'Notiz 1' },
+        { id: 2, title: 'Notiz 2' },
+        { id: 3, title: 'Notiz 3' },
+    ]
     return (
         <View style={styles.container}>
             <Text>Meine Notizen</Text>
+            <FlatList
+                data={data}
+                renderItem={({ item }) => <Text>{item.title}</Text>}
+            />
             <Button title='View 1' onPress={() => navigation.navigate('Details', { id: 1 })} />
             <Button title='View 2' onPress={() => navigation.navigate('Details', { id: 2 })} />
         </View>
