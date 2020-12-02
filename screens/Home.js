@@ -31,10 +31,18 @@ function Home(props) {
             <Text>Meine Notizen</Text>
             <FlatList
                 data={data}
-                renderItem={({ item }) => <Text>{item.title}</Text>}
+                renderItem={({ item }) => <NoteListItem title={item.title} />}
             />
             <Button title='View 1' onPress={() => navigation.navigate('Details', { id: 1 })} />
             <Button title='View 2' onPress={() => navigation.navigate('Details', { id: 2 })} />
+        </View>
+    );
+}
+
+function NoteListItem({ title }) {
+    return (
+        <View style={{ width: '100%', backgroundColor: 'cyan', padding: 5, margin: 5 }}>
+            <Text>{title}</Text>
         </View>
     );
 }
